@@ -121,9 +121,10 @@ var AudioRecorder = /** @class */ (function (_super) {
             this.props.onAbort();
     };
     AudioRecorder.prototype.render = function () {
+        var buttonClassName = this.props.buttonClassName;
         return (React.createElement("div", { className: "AudioRecorder" },
             React.createElement("button", { className: [
-                    'AudioRecorder-button',
+                    "AudioRecorder-button " + buttonClassName + " ",
                     this.state.audioData ? 'hasAudio' : '',
                     this.state.isPlaying ? 'isPlaying' : '',
                     this.state.isRecording ? 'isRecording' : '',
@@ -133,9 +134,9 @@ var AudioRecorder = /** @class */ (function (_super) {
                 !this.state.audioData && !this.state.isRecording && this.props.recordLabel,
                 !this.state.audioData && this.state.isRecording && this.props.recordingLabel),
             this.state.audioData &&
-                React.createElement("button", { className: "AudioRecorder-remove", onClick: this.onRemoveClick }, this.props.removeLabel),
+                React.createElement("button", { className: "AudioRecorder-remove " + buttonClassName, onClick: this.onRemoveClick }, this.props.removeLabel),
             this.state.audioData && this.props.downloadable &&
-                React.createElement("button", { className: "AudioRecorder-download", onClick: this.onDownloadClick }, this.props.downloadLabel)));
+                React.createElement("button", { className: "AudioRecorder-download " + buttonClassName, onClick: this.onDownloadClick }, this.props.downloadLabel)));
     };
     AudioRecorder.defaultProps = {
         loop: false,

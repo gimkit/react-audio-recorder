@@ -7,6 +7,7 @@ interface AudioRecorderProps {
     filename?: string;
     className?: string;
     style?: Object;
+    buttonClassName?: string;
     onAbort?: () => void;
     onChange?: (AudioRecorderChangeEvent: any) => void;
     onEnded?: () => void;

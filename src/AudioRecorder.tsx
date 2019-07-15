@@ -13,6 +13,7 @@ interface AudioRecorderProps {
   filename?: string,
   className?: string,
   style?: Object,
+  buttonClassName?: string
 
   onAbort?: () => void,
   onChange?: (AudioRecorderChangeEvent) => void,
@@ -155,12 +156,15 @@ export default class AudioRecorder extends React.Component<AudioRecorderProps, A
   };
 
   render() {
+
+    const {buttonClassName} = this.props
+
     return (
       <div className="AudioRecorder">
         <button
           className={
             [
-              'AudioRecorder-button',
+              `AudioRecorder-button ${buttonClassName} `,
               this.state.audioData ? 'hasAudio' : '',
               this.state.isPlaying ? 'isPlaying' : '',
               this.state.isRecording ? 'isRecording' : '',
@@ -175,7 +179,7 @@ export default class AudioRecorder extends React.Component<AudioRecorderProps, A
         </button>
         {this.state.audioData &&
           <button
-            className="AudioRecorder-remove"
+            className={`AudioRecorder-remove ${buttonClassName}`}
             onClick={this.onRemoveClick}
           >
             {this.props.removeLabel}
@@ -183,7 +187,7 @@ export default class AudioRecorder extends React.Component<AudioRecorderProps, A
         }
         {this.state.audioData && this.props.downloadable &&
           <button
-            className="AudioRecorder-download"
+            className={`AudioRecorder-download ${buttonClassName}`}
             onClick={this.onDownloadClick}
           >
             {this.props.downloadLabel}
